@@ -1,0 +1,41 @@
+MongoDB Atlas + deployment checklist
+=====================================
+
+Your Flask app stores data in Atlas database "heartdb" (collections: patients, users, otp).
+MongoDB Compass should show the same cluster host as in MONGODB_URI (e.g. cluster0...mongodb.net).
+
+1) Atlas (cloud.mongodb.com)
+   - Create a database user and get the connection string (Drivers → Python).
+   - Network Access: add "Allow access from anywhere" (0.0.0.0/0) so Render/Fly/Heroku can connect,
+     or add your host’s static IPs if you prefer.
+   - After deploying the API, open in a browser (replace with your API URL):
+       https://YOUR-BACKEND.onrender.com/api/health
+     You should see "ok": true and patient/user counts. If "mongodb": "error", check MONGODB_URI and Atlas IP list.
+
+2) Backend (Flask) — e.g. Render.com
+   - Root directory: backend
+   - Build: pip install -r requirements.txt
+   - Start: gunicorn app:app --bind 0.0.0.0:$PORT   (Procfile is included)
+   - Environment variables (do not commit real values to git):
+       MONGODB_URI = your Atlas SRV string (with password)
+       MONGODB_DB_NAME = heartdb
+       CORS_ORIGINS = https://YOUR-FRONTEND.netlify.app,http://localhost:3000
+       ADMIN_EMAIL / ADMIN_PASSWORD = your admin login
+       FLASK_DEBUG = 0
+   - Optional on Linux: install Tesseract in the build image if you need OCR; otherwise OCR may no-op.
+
+3) Frontend (React) — e.g. Netlify / Vercel / static host
+   - Build: cd frontend && npm install && npm run build
+   - Publish folder: frontend/build
+   - Set environment variable for production builds:
+       REACT_APP_API_URL = https://YOUR-BACKEND.onrender.com
+     (no trailing slash). Rebuild after changing this.
+
+4) Local development
+   - Copy backend/.env.example to backend/.env and set MONGODB_URI.
+   - backend/.env is gitignored.
+   - Frontend: leave REACT_APP_API_URL unset so config.js uses http://127.0.0.1:5000 in development.
+
+5) Security
+   - Rotate any password that was ever committed to source control.
+   - Never push backend/.env to a public repository.

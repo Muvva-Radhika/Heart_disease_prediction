@@ -5,46 +5,49 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard"; // <-- Create/Import your new Dashboard component
 import BiologicalInfo from "./pages/BiologicalInfo";
-import ReportUpload from "./pages/ReportUpload";
+import ClinicalReportUpload from "./pages/ClinicalReportUpload";
 import Results from "./pages/Results";
 import History from "./pages/History";
 import Recommendations from "./pages/Recommendations";
+import Settings from "./pages/Settings";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
-  const [allData, setAllData] = useState({});
   const [resultData, setResultData] = useState(null);
 
   return (
     <div className="App">
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<Splash />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Dashboard & Home - Ensure your Sidebar links to /home or /dashboard */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard data={resultData} />} />
+        {/* Home page now handles the Dashboard view internally */}
+        <Route path="/home" element={<Home data={resultData} />} />
 
-        {/* Prediction Flow */}
         <Route
           path="/bio"
-          element={<BiologicalInfo onNext={(data) => setAllData(data)} />}
+          element={<BiologicalInfo onResult={(res) => setResultData(res)} />}
         />
-        <Route
-          path="/report-upload"
-          element={<ReportUpload allData={allData} onResult={(res) => setResultData(res)} />}
-        />
-        <Route path="/results" element={<Results data={resultData} />} />
 
-        {/* Other Features */}
+        <Route
+          path="/bio/upload"
+          element={<ClinicalReportUpload onResult={(res) => setResultData(res)} />}
+        />
+
+        <Route path="/report-upload" element={<Navigate to="/bio" replace />} />
+
+        <Route path="/results" element={<Results data={resultData} />} />
         <Route path="/history" element={<History />} />
         <Route path="/recommendations" element={<Recommendations />} />
+        <Route path="/settings" element={<Settings />} />
 
-        {/* Catch-all redirect */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>

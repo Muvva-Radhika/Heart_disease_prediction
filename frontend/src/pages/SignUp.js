@@ -13,6 +13,10 @@ export default function SignUp() {
     const handleSignUp = (e) => {
         e.preventDefault();
         localStorage.setItem("hasSignedUp", "true");
+        if (userData.email) {
+            localStorage.setItem("userEmail", userData.email.trim());
+            localStorage.setItem("userName", (userData.username || userData.email.split("@")[0] || "User").trim());
+        }
         alert("Registration Successful!");
         navigate("/login");
     };

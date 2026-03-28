@@ -17,7 +17,15 @@ export default function Login() {
     return (
         <div className="card">
             <h3 className="form-title">Login</h3>
-            <form onSubmit={(e) => { e.preventDefault(); navigate("/home"); }} className="neat-form-list">
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                const email = loginData.email.trim();
+                if (email) {
+                    localStorage.setItem("userEmail", email);
+                    localStorage.setItem("userName", email.split("@")[0] || "User");
+                }
+                navigate("/home");
+            }} className="neat-form-list">
                 <div className="form-row">
                     <label>Email Address</label>
                     <input type="email" name="email" className="form-input" onChange={handleChange} required />
@@ -47,6 +55,9 @@ export default function Login() {
             </form>
             <div className="auth-footer">
                 <p>New here? <span className="link-text" onClick={() => navigate("/signup")}> Sign Up</span></p>
+                <p style={{ marginTop: 10 }}>
+                    <span className="link-text" onClick={() => navigate("/admin/login")}>Staff admin</span>
+                </p>
             </div>
         </div>
     );
