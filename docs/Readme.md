@@ -8,6 +8,7 @@ Provide a simple interface for preliminary heart disease risk screening
 Demonstrate full-stack development using modern web technologies
 Integrate optional OCR for extracting data from medical reports
 Disclaimer: This application provides indicative results only and is not a substitute for professional medical advice.
+
 App : https://heart-disease-prediction-green.vercel.app
 
 🚀 Features
@@ -21,7 +22,7 @@ History tracking of predictions
 Admin panel for managing users and patient data
 RESTful API with MongoDB integration
 Health check endpoint for system verification
-Tech Stack
+🛠️ Tech Stack
 Frontend
 React 18
 React Router
@@ -36,7 +37,7 @@ OCR (Optional)
 Tesseract OCR
 pytesseract
 Pillow
-Installation & Setup
+⚙️ Installation & Setup
 1. Backend Setup
 cd backend
 python -m venv venv
