@@ -1,74 +1,117 @@
-Heart Disease Risk Assessment Web Application
-📖 Description
-This project is a full-stack web application designed for educational cardiovascular risk assessment using clinical parameters. It allows users to input health-related data, optionally upload medical reports, and receive an estimated risk score.
+# ❤️ Heart Disease Risk Assessment Web Application
 
-The application aims to:
+## 📖 Description
+This project is a **full-stack web application** designed for **educational cardiovascular risk assessment** using clinical parameters. It enables users to input health-related data, optionally upload medical reports, and receive an estimated risk score.
 
-Provide a simple interface for preliminary heart disease risk screening
-Demonstrate full-stack development using modern web technologies
-Integrate optional OCR for extracting data from medical reports
-Disclaimer: This application provides indicative results only and is not a substitute for professional medical advice.
+### 🎯 Objectives
+- Provide a simple interface for preliminary heart disease risk screening  
+- Demonstrate full-stack development using modern web technologies  
+- Integrate optional OCR for extracting data from medical reports  
 
+> ⚠️ **Disclaimer:** This application provides indicative results only and is **not a substitute for professional medical advice**.
+ 
 App : https://heart-disease-prediction-green.vercel.app
 
-🚀 Features
-User authentication (Signup, Login, OTP-based password reset)
-Input clinical parameters (age, BP, cholesterol, etc.)
-Risk prediction with percentage score (0–100)
-Risk categorization (Low / Moderate / High)
-Optional medical report upload with OCR extraction
-Dashboard with charts and summary
-History tracking of predictions
-Admin panel for managing users and patient data
-RESTful API with MongoDB integration
-Health check endpoint for system verification
-🛠️ Tech Stack
-Frontend
-React 18
-React Router
-Recharts
-Backend
-Flask
-Flask-CORS
-Gunicorn (Production)
-Database
-MongoDB Atlas
-OCR (Optional)
-Tesseract OCR
-pytesseract
-Pillow
-⚙️ Installation & Setup
-1. Backend Setup
+
+---
+
+## 🚀 Features
+
+- 🔐 User Authentication (Signup, Login, OTP-based password reset)  
+- 🧾 Input clinical parameters (Age, Blood Pressure, Cholesterol, etc.)  
+- 📊 Risk prediction with percentage score (0–100)  
+- ⚠️ Risk categorization (Low / Moderate / High)  
+- 📄 Optional medical report upload with OCR extraction  
+- 📈 Dashboard with charts and summary (Recharts)  
+- 🕓 History tracking of previous predictions  
+- 🛠️ Admin panel for managing users and patient data  
+- 🔗 RESTful API with MongoDB integration  
+- ❤️ Health check endpoint for system verification  
+
+---
+
+## 🛠️ Tech Stack
+
+### 🌐 Frontend
+- React 18  
+- React Router  
+- Recharts  
+
+### ⚙️ Backend
+- Flask  
+- Flask-CORS  
+- Gunicorn (Production Server)  
+
+### 🗄️ Database
+- MongoDB Atlas  
+
+### 🔍 OCR (Optional)
+- Tesseract OCR  
+- pytesseract  
+- Pillow  
+
+---
+
+## 📂 Project Structure
+
+
+Heart-Disease-App/
+│
+├── backend/
+│ ├── app.py
+│ ├── routes/
+│ ├── model/
+│ ├── utils/
+│ ├── requirements.txt
+│ └── .env
+│
+├── frontend/
+│ ├── src/
+│ ├── public/
+│ ├── package.json
+│
+└── README.md
+
+
+---
+
+## ⚙️ Installation & Setup
+
+### 🔹 Backend Setup
+
+```bash
 cd backend
 python -m venv venv
-
-# Activate environment
-# Windows: venv\Scripts\activate
-# macOS/Linux: source venv/bin/activate
-
+Activate Virtual Environment
+Windows:
+venv\Scripts\activate
+macOS/Linux:
+source venv/bin/activate
+Install Dependencies
 pip install -r requirements.txt
-copy .env.example .env   # Use 'cp' for macOS/Linux
+Environment Configuration
+copy .env.example .env   # Windows
+# OR
+cp .env.example .env     # macOS/Linux
 
 Update .env file:
 
 MONGODB_URI=your_mongodb_connection_string
-
-Run the backend server:
-
+Run Backend Server
 python app.py
-2. Frontend Setup
+🔹 Frontend Setup
 cd frontend
 npm install
 npm start
 ▶️ Usage
-Open the frontend application in the browser
+Open the frontend application in your browser
 Sign up or log in
 Enter clinical parameters
 Optionally upload a medical report
 View risk prediction results
 Access dashboard and history
 🔌 API / Integration
-Key API Endpoints
+📌 Key API Endpoints
 Method	Endpoint	Description
 GET	/api/health	Health check
 POST	/predict	Risk prediction
@@ -78,15 +121,15 @@ POST	/api/send-otp	Send OTP
 POST	/api/reset-password	Reset password
 POST	/api/admin/login	Admin login
 GET	/api/admin/*	Admin operations
-External Services
+🌐 External Services
 MongoDB Atlas (Database)
 Tesseract OCR (Optional)
 🧠 Workflow / System Architecture
-User interacts with React frontend
-Data is sent to Flask backend via REST API
+User interacts with the React frontend
+Data is sent to the Flask backend via REST API
 Backend processes:
 Validates input
-Computes risk score using a heuristic function
+Computes risk score using heuristic logic
 Optionally extracts data using OCR
 Results are stored in MongoDB
 Response is sent back to frontend for display
@@ -102,9 +145,12 @@ Add screenshots or demo links here
 
 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome! 🚀
 
 Fork the repository
 Create a new branch
 Make your changes
 Submit a pull request
+📌 License
+
+This project is for educational purposes only.
