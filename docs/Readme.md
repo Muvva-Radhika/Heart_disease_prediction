@@ -52,25 +52,7 @@ App : https://heart-disease-prediction-green.vercel.app
 
 ---
 
-## 📂 Project Structure
 
-
-Heart-Disease-App/
-│
-├── backend/
-│ ├── app.py
-│ ├── routes/
-│ ├── model/
-│ ├── utils/
-│ ├── requirements.txt
-│ └── .env
-│
-├── frontend/
-│ ├── src/
-│ ├── public/
-│ ├── package.json
-│
-└── README.md
 
 
 ---
